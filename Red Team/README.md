@@ -6,7 +6,7 @@ In order to find the ip address of the machine, we will need to use a network ma
 
 - Open the terminal and run: nmap 192.168.1.0/24 (We used this ip cidr range bcause our attack machine belongs to this subnetwork.)
 
-![alt text](https://github.com/cyberprotocols/cyberpro_inc/blob/main/Diagrams/Virtual_Network_Map.JPG)
+![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/1_nmap.jpg)
 
 From the Nmap scan we can see that port 80 is open. Next we opened a web browser and typed the IP address of the machine into the address bar.
 
