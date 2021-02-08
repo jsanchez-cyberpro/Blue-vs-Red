@@ -109,7 +109,7 @@ paste the password hash and filled out the CAPTCHA; and clicked Crack Hashes.
 
 - I visited where i uploaded the reverse shell and clicked it to activate it. (If it seems like tge browser is hanging or loading, that means it has worked.)
 
-![alt text](https://github.com/cyberprotocols/cyberpro_inc/blob/main/Ansible/docker_ps_screenshot.png)
+![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/15_activiating_the_shell.jpg)
 
 ### Step 7: Find and capture the flag. 
 
