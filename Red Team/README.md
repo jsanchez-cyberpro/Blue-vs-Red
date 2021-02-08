@@ -27,10 +27,6 @@ From the Nmap scan we can see that port 80 is open. Next we opened a web browser
 
 ![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/ashton_eyes_only.jpg)
 
-- We then went back to the web browser and use the credential to log in. We clicked the file connecting_to_webdav
-
-![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/webdav_connection.jpg)
-
 
 ### Step 3: Brute force the password for the hidden directory.
 
