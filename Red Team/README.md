@@ -25,7 +25,7 @@ From the Nmap scan we can see that port 80 is open. Next we opened a web browser
 
 - The directory requested authentication in order to access it. Reading the authentication method, it says "For ashton's eyes only"
 
-![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/ashton_eyes_only.jpg)
+![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/Images/ashton_eyes_only.jpg)
 
 
 ### Step 3: Brute force the password for the hidden directory.
@@ -37,11 +37,11 @@ to use a brute force attack, specifically Hydra.
 
    - type: hydra -l ashton -P /usr/share/wordlists/rockyou.txt -s 80 -f -vV 192.168.1.105 http-get /company_folders/secret_folder
 
-![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/hydra_sytanx.jpg)
+![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/Images/hydra_sytanx.jpg)
 
 - The brute force attack may take some time. Once it finished, the username is ashton and the password is leopoldo.
 
-![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/password_discovery.jpg)
+![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/Images/password_discovery.jpg)
 
 - Went back to the web browser and used the credentiial to log in. We open the file connecting_to_webdav file.  
 
