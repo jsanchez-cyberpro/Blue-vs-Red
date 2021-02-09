@@ -21,9 +21,9 @@ From the Nmap scan we can see that port 80 is open. Next we opened a web browser
 
 ![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/recurring%20message.JPG)
 
-- Upon such discovery we navigated to the directory by typing: 192.168.1.105/company_folders/secret_folder
+- Upon such discovery I navigated to the directory by typing: 192.168.1.105/company_folders/secret_folder
 
-- The directory asked us for authentication in order to access it. Reading the authentication method, it says "For ashton's eyes only"
+- The directory requested authentication in order to access it. Reading the authentication method, it says "For ashton's eyes only"
 
 ![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/ashton_eyes_only.jpg)
 
@@ -43,7 +43,7 @@ to use a brute force attack, specifically Hydra.
 
 ![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/password_discovery.jpg)
 
-- We went back to the web browser and used the credentiial to log in. We open the file connecting_to_webdav file.  
+- Went back to the web browser and used the credentiial to log in. We open the file connecting_to_webdav file.  
 
 ![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/7_inside_secret_directory.jpg)
 
