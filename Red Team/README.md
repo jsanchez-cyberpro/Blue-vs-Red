@@ -19,7 +19,7 @@ From the Nmap scan we can see that port 80 is open. Next we opened a web browser
 
 - Navigating through different directories, i saw a recurring message:
 
-![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/recurring%20message.JPG)
+![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/Images/recurring%20message.JPG)
 
 - Upon such discovery I navigated to the directory by typing: 192.168.1.105/company_folders/secret_folder
 
