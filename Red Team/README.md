@@ -45,11 +45,11 @@ to use a brute force attack, specifically Hydra.
 
 - Went back to the web browser and used the credentiial to log in. We open the file connecting_to_webdav file.  
 
-![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/7_inside_secret_directory.jpg)
+![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/Images/7_inside_secret_directory.jpg)
 
 - Located inside of the WebDAV file are instructions on how to connect to the WebDAV directory, as well the user's username and hashed password.
 
-![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/8a_webdav_hash.jpg)
+![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/Images/8a_webdav_hash.jpg)
 
 
 ### Step 4: Connect to the server via Webdav 
@@ -57,7 +57,7 @@ to use a brute force attack, specifically Hydra.
 There are several ways to break the password hash. But in this intanse we avoided waiting for john to crack the password hash, we used https://crackstation.net
 paste the password hash and filled out the CAPTCHA; and clicked Crack Hashes. 
 
-![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/9_password_hash_cracking.jpg)
+![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/Images/9_password_hash_cracking.jpg)
 
 - The password is revealed as: linux4u
 
@@ -71,7 +71,7 @@ paste the password hash and filled out the CAPTCHA; and clicked Crack Hashes.
 
 	- In the URL bar, typed: dav://192.168.1.105/webdav, and entered the credentials to log in.
 
-![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/10_connect_to_webdav.jpg)
+![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/Images/10_connect_to_webdav.jpg)
 
 
 ### Step 6: Creating and Uploading a PHP reverse shell payload.
