@@ -1,6 +1,6 @@
-﻿##Red Team 
+﻿## Red Team 
 
-###Step 1: Discovering the IP address of the linux server.
+### Step 1: Discovering the IP address of the linux server.
 
 In order to find the ip address of the machine, we will need to use a network mapping tool called Nmap to scan the network. 
 
@@ -15,9 +15,9 @@ From the Nmap scan we can see that port 80 is open. Next we opened a web browser
 
 
 
-###Step 2: Locating the hidden directory on the server.
+### Step 2: Locating the hidden directory on the server.
 
-- We navigated through different directories, we noticed reocurring messages:
+- Navigating through different directories, i saw a recurring message:
 
 ![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/recurring%20message.JPG)
 
@@ -43,9 +43,9 @@ to use a brute force attack, specifically Hydra.
 
 ![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/password_discovery.jpg)
 
--We went back to the web browser and used the credentiial to log in. We open the file connecting_to_webdav file.  
+- We went back to the web browser and used the credentiial to log in. We open the file connecting_to_webdav file.  
 
-![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/14_webdav_%20access_laststeps.png)
+![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/7_inside_secret_directory.jpg)
 
 - Located inside of the WebDAV file are instructions on how to connect to the WebDAV directory, as well the user's username and hashed password.
 
