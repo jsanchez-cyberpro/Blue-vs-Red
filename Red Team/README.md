@@ -122,8 +122,8 @@ paste the password hash and filled out the CAPTCHA; and clicked Crack Hashes.
 
 - Printed the file once i located it by: cat flag.txt
 
-![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/16_view_files.jpg)
+![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/Images/16_view_files.jpg)
 
-![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/check_point.jpg)
+![alt text](https://github.com/jsanchez-cyberpro/Blue-vs-Red/blob/main/Red%20Team/Images/check_point.jpg)
 
 
